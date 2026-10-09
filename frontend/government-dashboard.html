@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Civic Command Center - CivicSolve AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-wrapper">
+    
+    <aside class="app-sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-logo">
+          <i class="fa-solid fa-city"></i>
+          <span>CivicSolve<span class="ai-tag">AI</span></span>
+        </a>
+      </div>
+      <div class="sidebar-role-badge">
+        <span class="role-title">Civic Command Center</span>
+        <span class="badge badge-primary"><i class="fa-solid fa-shield"></i> Verified</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">Navigation Menu</div>
+        
+        <a href="government-dashboard.html" class="sidebar-link active">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Command Center</span>
+        </a>
+        
+        <a href="government-map.html" class="sidebar-link ">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Incident Map</span>
+        </a>
+        
+        <a href="government-monitoring.html" class="sidebar-link ">
+          <i class="fa-solid fa-desktop"></i>
+          <span>Live Monitoring</span>
+        </a>
+        
+        <a href="government-analytics.html" class="sidebar-link ">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>City Analytics</span>
+        </a>
+        
+        <a href="escalation-center.html" class="sidebar-link ">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Escalation Desk</span>
+        </a>
+        
+        <a href="profile.html" class="sidebar-link ">
+          <i class="fa-solid fa-user-tie"></i>
+          <span>Official Profile</span>
+        </a>
+        
+        <div class="nav-section-title" style="margin-top:1.5rem;">Quick Switch Role</div>
+        <a href="login.html" class="sidebar-link">
+          <i class="fa-solid fa-repeat"></i>
+          <span>Switch User / Role</span>
+        </a>
+        <a href="index.html" class="sidebar-link">
+          <i class="fa-solid fa-globe"></i>
+          <span>Public Website</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-mini-avatar">CS</div>
+        <div class="user-mini-info">
+          <div class="user-mini-name">Logged In User</div>
+          <div class="user-mini-role">Civic Command Center</div>
+        </div>
+        <button class="btn btn-icon btn-secondary" onclick="CivicAuth.logout()" title="Logout">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+    </aside>
+    
+    <div class="app-main">
+      
+    <header class="app-topbar">
+      <div class="flex items-center gap-2">
+        <button id="mobileMenuToggle" class="btn btn-icon btn-secondary" style="display:none;" title="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="topbar-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search problem ID, category, ward, or keyword...">
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <!-- Demo Mode Role Selector -->
+        <div class="flex items-center gap-1">
+          <span style="font-size:0.75rem; font-weight:700; color:var(--muted); text-transform:uppercase;">Demo Role:</span>
+          <select id="demoRoleSelector" class="form-select" style="padding:0.35rem 0.65rem; font-size:0.85rem; width:auto;">
+            <option value="citizen">Citizen</option>
+            <option value="authority">Authority Officer</option>
+            <option value="government">Government Official</option>
+            <option value="admin">System Admin</option>
+            <option value="university">University Team</option>
+            <option value="faculty">Faculty Mentor</option>
+            <option value="student">Student Team</option>
+            <option value="industry">Industry Partner</option>
+          </select>
+        </div>
+
+        <button class="theme-toggle-btn" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <a href="notifications.html" class="topbar-btn" title="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="topbar-badge"></span>
+        </a>
+
+        <a href="submit-problem.html" class="btn btn-sm btn-primary">
+          <i class="fa-solid fa-circle-plus"></i> Report Issue
+        </a>
+      </div>
+    </header>
+    
+      <main class="app-content">
+        <div class="page-header">
+          <div>
+            <h1 class="page-title">Government Civic Command Center</h1>
+            <p class="page-subtitle">Executive-level overview of citywide problems, real-time SLA health, department allocations, and AI analytics.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="badge badge-neutral"><i class="fa-regular fa-clock"></i> Live Synced</span>
+          </div>
+        </div>
+        
+    <!-- 8 Executive Stats -->
+    <div class="dashboard-grid-4" style="margin-bottom: 2rem;">
+      <div class="stat-card">
+        <div class="stat-icon primary"><i class="fa-solid fa-city"></i></div>
+        <div class="stat-info">
+          <div class="stat-value">12,458</div>
+          <div class="stat-label">Total Problems</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon danger"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="stat-info">
+          <div class="stat-value">28</div>
+          <div class="stat-label">Critical Incidents</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon warning"><i class="fa-solid fa-bolt"></i></div>
+        <div class="stat-info">
+          <div class="stat-value">142</div>
+          <div class="stat-label">High Priority</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon accent"><i class="fa-solid fa-spinner"></i></div>
+        <div class="stat-info">
+          <div class="stat-value">2,480</div>
+          <div class="stat-label">In Progress</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Command Assistant Panel -->
+    <div class="ai-analysis-card" style="margin-bottom: 2rem;">
+      <div class="ai-scan-bar"></div>
+      <h3 style="margin-bottom: 0.5rem;"><i class="fa-solid fa-brain text-primary"></i> AI Command Query Assistant</h3>
+      <p style="font-size:0.9rem; color:var(--muted); margin-bottom:1rem;">
+        Ask high-level queries across municipal databases for immediate AI synthesized intelligence:
+      </p>
+      <div class="flex gap-2 flex-wrap" style="margin-bottom:1rem;">
+        <button class="btn btn-sm btn-secondary" onclick="askAIPrompt('Show critical road problems')">"Show critical road problems"</button>
+        <button class="btn btn-sm btn-secondary" onclick="askAIPrompt('Which district has the most unresolved waste issues?')">"Which district has most waste issues?"</button>
+        <button class="btn btn-sm btn-secondary" onclick="askAIPrompt('Show overdue SLA problems')">"Show overdue problems"</button>
+        <button class="btn btn-sm btn-secondary" onclick="askAIPrompt('Find duplicate complaints')">"Find duplicate complaints"</button>
+      </div>
+      <div id="aiPromptOutput" style="display:none; background:var(--bg-card); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border); font-size:0.9rem;">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Charts Row 1 -->
+    <div class="dashboard-grid-2" style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fa-solid fa-chart-pie text-primary"></i> Problems by Category</h3>
+          <span class="badge badge-neutral">Live</span>
+        </div>
+        <canvas id="chartCategory" style="max-height:280px;"></canvas>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fa-solid fa-chart-line text-success"></i> Resolution Trends (Monthly)</h3>
+          <span class="badge badge-success">+14% Growth</span>
+        </div>
+        <canvas id="chartTrends" style="max-height:280px;"></canvas>
+      </div>
+    </div>
+
+    <!-- Charts Row 2 -->
+    <div class="dashboard-grid-2" style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fa-solid fa-chart-column text-accent"></i> District Workload Comparison</h3>
+          <a href="government-analytics.html" class="btn btn-sm btn-secondary">Deep Dive</a>
+        </div>
+        <canvas id="chartDistricts" style="max-height:280px;"></canvas>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fa-solid fa-signal text-warning"></i> Incident Severity Distribution</h3>
+        </div>
+        <canvas id="chartSeverity" style="max-height:280px;"></canvas>
+      </div>
+    </div>
+
+    <!-- Escalation Quick Center -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-triangle-exclamation text-danger"></i> Urgent SLA Breaches Requiring Commissioner Review</h3>
+        <a href="escalation-center.html" class="btn btn-sm btn-danger">Escalation Center →</a>
+      </div>
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Incident</th>
+              <th>Authority</th>
+              <th>Officer</th>
+              <th>SLA Status</th>
+              <th>Escalation Level</th>
+              <th>Direct Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CS-2026-0002</strong></td>
+              <td>Contaminated Turbid Drinking Water Supply</td>
+              <td>Water Supply Board (BWSSB)</td>
+              <td>Smt. Kavita Rao</td>
+              <td><span class="badge badge-danger">-12h Overdue</span></td>
+              <td><span class="badge badge-warning">Tier-2 Senior Officer</span></td>
+              <td><button class="btn btn-sm btn-danger" onclick="CivicUtils.showToast('Urgent commissioner summons issued to BWSSB chief.', 'warning')">Summon Chief</button></td>
+            </tr>
+            <tr>
+              <td><strong>CS-2026-0014</strong></td>
+              <td>Unsegregated Medical Waste Dumped Behind Clinic</td>
+              <td>Health & Pollution Board</td>
+              <td>Dr. B. Manjunath</td>
+              <td><span class="badge badge-warning">2h Remaining</span></td>
+              <td><span class="badge badge-accent">Tier-1 Authority Reminder</span></td>
+              <td><button class="btn btn-sm btn-secondary" onclick="CivicUtils.showToast('Reminder pushed to Zonal Officer phone.', 'info')">Send Alert</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+      </main>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ai-analysis.js"></script>
+  <script src="js/app.js"></script>
+  
+    <script src="js/analytics.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        CivicAnalytics.initCharts();
+      });
+
+      function askAIPrompt(query) {
+        const out = document.getElementById("aiPromptOutput");
+        out.style.display = "block";
+        out.innerHTML = `<em>Querying city civic data lake for: "${query}"...</em>`;
+
+        setTimeout(() => {
+          let response = "";
+          if (query.includes("road")) {
+            response = "<strong>AI Finding:</strong> Found 4 Critical road incidents. Highest risk is <strong>CS-2026-0001 (MG Road)</strong> and <strong>CS-2026-0010 (Kengeri Underpass)</strong> with 6,600 total citizens affected.";
+          } else if (query.includes("waste")) {
+            response = "<strong>AI Finding:</strong> <strong>Central District</strong> has the highest volume of waste complaints (18 complaints), with Ward 12 and Ward 14 needing immediate truck deployment.";
+          } else if (query.includes("overdue")) {
+            response = "<strong>AI Finding:</strong> 1 Critical complaint has breached SLA: <strong>CS-2026-0002 (Drinking Water Contamination)</strong> - 12 hours overdue.";
+          } else {
+            response = "<strong>AI Finding:</strong> Analyzed 20 complaints in active grid. 2 complaints flagged with 85%+ semantic similarity for merging in East District.";
+          }
+
+          out.innerHTML = `
+            <div class="flex items-center gap-2" style="margin-bottom:0.5rem; color:var(--primary); font-weight:700;">
+              <i class="fa-solid fa-sparkles"></i> Civic AI Assistant Response
+            </div>
+            <p>${response}</p>
+          `;
+        }, 600);
+      }
+    </script>
+    
+</body>
+</html>

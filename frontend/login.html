@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - CivicSolve AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background: linear-gradient(135deg, #EEF2FF 0%, #F8FAFC 100%); min-height:100vh; display:flex; flex-direction:column;">
+
+  <!-- Header -->
+  <header style="padding:1.5rem 2rem; display:flex; justify-content:space-between; align-items:center;">
+    <a href="index.html" class="brand-logo">
+      <i class="fa-solid fa-city"></i>
+      <span>CivicSolve<span class="ai-tag">AI</span></span>
+    </a>
+    <div class="flex items-center gap-2">
+      <button class="theme-toggle-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+      <a href="index.html" class="btn btn-sm btn-secondary"><i class="fa-solid fa-arrow-left"></i> Home</a>
+    </div>
+  </header>
+
+  <main style="flex:1; display:flex; align-items:center; justify-content:center; padding:1.5rem;">
+    <div style="width:100%; max-width:540px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:2.5rem; box-shadow:var(--shadow-xl);">
+      
+      <div style="text-align:center; margin-bottom:2rem;">
+        <span class="badge badge-primary" style="margin-bottom:0.5rem;"><i class="fa-solid fa-shield"></i> Secure Single Sign-On</span>
+        <h2 style="font-size:1.75rem; font-weight:800; color:var(--dark);">Sign in to CivicSolve AI</h2>
+        <p style="font-size:0.9rem; color:var(--muted); margin-top:0.25rem;">Access role-tailored dashboards and municipal resolution workspaces.</p>
+      </div>
+
+      <!-- Quick 1-Click Demo Login Selector -->
+      <div style="background:var(--bg-subtle); border:1px solid var(--border); border-radius:var(--radius-md); padding:1rem; margin-bottom:1.75rem;">
+        <div class="flex items-center justify-between" style="margin-bottom:0.75rem;">
+          <span style="font-size:0.8rem; font-weight:700; color:var(--primary); text-transform:uppercase;">
+            <i class="fa-solid fa-bolt"></i> 1-Click Demo Persona Launch
+          </span>
+          <span class="badge badge-success">Instant Access</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;">
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('citizen')"><i class="fa-solid fa-user"></i> Citizen</button>
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('authority')"><i class="fa-solid fa-building-user"></i> Authority Officer</button>
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('government')"><i class="fa-solid fa-building-columns"></i> Government Desk</button>
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('admin')"><i class="fa-solid fa-shield-halved"></i> Administrator</button>
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('university')"><i class="fa-solid fa-graduation-cap"></i> University Dean</button>
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('faculty')"><i class="fa-solid fa-chalkboard-user"></i> Faculty Mentor</button>
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('student')"><i class="fa-solid fa-laptop-code"></i> Student Team</button>
+          <button class="btn btn-sm btn-secondary" onclick="CivicAuth.loginAs('industry')"><i class="fa-solid fa-briefcase"></i> Industry Partner</button>
+        </div>
+      </div>
+
+      <!-- Standard Form -->
+      <form id="standardLoginForm" onsubmit="event.preventDefault(); handleCustomLogin();">
+        <div class="form-group">
+          <label class="form-label">Select Account Role</label>
+          <select id="loginRoleSelect" class="form-select">
+            <option value="citizen">Citizen Reporter</option>
+            <option value="authority">Government Authority Officer</option>
+            <option value="government">Government Commissioner / Official</option>
+            <option value="admin">System Administrator</option>
+            <option value="university">University Innovation Cell</option>
+            <option value="faculty">Faculty Mentor</option>
+            <option value="student">Student Team Innovator</option>
+            <option value="industry">Industry CSR Partner</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="loginEmail" class="form-control" placeholder="user@civicsolve.ai" value="demo@civicsolve.ai" required>
+        </div>
+
+        <div class="form-group">
+          <div class="flex justify-between items-center" style="margin-bottom:0.5rem;">
+            <label class="form-label" style="margin-bottom:0;">Password</label>
+            <a href="forgot-password.html" style="font-size:0.8rem; color:var(--primary); font-weight:600;">Forgot password?</a>
+          </div>
+          <input type="password" class="form-control" value="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" style="padding:0.85rem; font-size:1rem; margin-top:0.5rem;">
+          <i class="fa-solid fa-right-to-bracket"></i> Sign In to Dashboard
+        </button>
+      </form>
+
+      <p style="text-align:center; margin-top:1.5rem; font-size:0.875rem; color:var(--muted);">
+        Don't have an account yet? <a href="register.html" style="color:var(--primary); font-weight:600;">Register as Citizen or Innovator</a>
+      </p>
+    </div>
+  </main>
+
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    function handleCustomLogin() {
+      const role = document.getElementById("loginRoleSelect").value;
+      CivicUtils.showToast("Authenticating session...", "info", 1000);
+      setTimeout(() => {
+        CivicAuth.loginAs(role);
+      }, 500);
+    }
+  </script>
+</body>
+</html>

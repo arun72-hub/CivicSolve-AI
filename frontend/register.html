@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - CivicSolve AI</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background: linear-gradient(135deg, #EEF2FF 0%, #F8FAFC 100%); min-height:100vh; display:flex; flex-direction:column;">
+
+  <header style="padding:1.5rem 2rem; display:flex; justify-content:space-between; align-items:center;">
+    <a href="index.html" class="brand-logo">
+      <i class="fa-solid fa-city"></i>
+      <span>CivicSolve<span class="ai-tag">AI</span></span>
+    </a>
+    <a href="login.html" class="btn btn-sm btn-secondary">Sign In</a>
+  </header>
+
+  <main style="flex:1; display:flex; align-items:center; justify-content:center; padding:1.5rem;">
+    <div style="width:100%; max-width:540px; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:2.5rem; box-shadow:var(--shadow-xl);">
+      <div style="text-align:center; margin-bottom:2rem;">
+        <h2 style="font-size:1.75rem; font-weight:800; color:var(--dark);">Create Your Account</h2>
+        <p style="font-size:0.9rem; color:var(--muted); margin-top:0.25rem;">Join thousands of citizens, engineers, and officials collaborating for societal progress.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); CivicUtils.showToast('Registration successful! Redirecting to citizen dashboard...', 'success'); setTimeout(() => CivicAuth.loginAs('citizen'), 1000);">
+        <div class="form-group">
+          <label class="form-label">I am registering as *</label>
+          <select class="form-select" id="regRole">
+            <option value="citizen">Citizen / Resident</option>
+            <option value="student">Student Innovator / Engineering Team</option>
+            <option value="faculty">University Faculty Mentor</option>
+            <option value="authority">Government Authority Officer</option>
+            <option value="industry">Industry CSR Representative</option>
+          </select>
+        </div>
+
+        <div class="dashboard-grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" class="form-control" placeholder="Priya Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <input type="tel" class="form-control" placeholder="+91 98450 12345" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input type="email" class="form-control" placeholder="priya@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Password *</label>
+          <input type="password" class="form-control" placeholder="Create strong password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" style="padding:0.85rem; font-size:1rem; margin-top:0.5rem;">
+          Create Free Account
+        </button>
+      </form>
+
+      <p style="text-align:center; margin-top:1.5rem; font-size:0.875rem; color:var(--muted);">
+        Already registered? <a href="login.html" style="color:var(--primary); font-weight:600;">Sign in here</a>
+      </p>
+    </div>
+  </main>
+
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
