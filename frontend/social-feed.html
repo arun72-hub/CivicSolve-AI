@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Civic Community Social Feed - CivicSolve AI</title>
+  <meta name="description" content="CivicSolve AI Civic Feed - Public engagement stream for civic issues.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/dashboard.css">
   <link rel="stylesheet" href="css/components.css">
@@ -11,12 +12,22 @@
   <link rel="stylesheet" href="css/animations.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <style>
+    /* Feed post card image */
+    .feed-post-img { height: 200px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1rem; }
+    .feed-post-img img { width: 100%; height: 100%; object-fit: cover; }
+    @media (max-width: 480px) {
+      .feed-post-img { height: 160px; }
+    }
+  </style>
 </head>
 <body>
+  <!-- Sidebar overlay for mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
   <div class="app-wrapper">
     
-    <aside class="app-sidebar">
+    <aside class="app-sidebar" style="width: 20%;">
       <div class="sidebar-header">
         <a href="index.html" class="brand-logo">
           <i class="fa-solid fa-city"></i>
@@ -86,13 +97,16 @@
       
     <header class="app-topbar">
       <div class="flex items-center gap-2">
-        <button id="mobileMenuToggle" class="btn btn-icon btn-secondary" style="display:none;" title="Toggle Menu">
+        <!-- <button id="mobileMenuToggle" class="btn btn-icon btn-secondary" aria-label="Toggle Menu">
           <i class="fa-solid fa-bars"></i>
-        </button>
-        <div class="topbar-search">
+        </button> -->
+        <div class="topbar-search" id="topbarSearch">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search problem ID, category, ward, or keyword...">
         </div>
+        <button class="btn btn-icon btn-secondary" id="searchToggle" title="Search" style="display:none;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
       <div class="topbar-actions">
         <!-- Demo Mode Role Selector -->
@@ -119,9 +133,7 @@
           <span class="topbar-badge"></span>
         </a>
 
-        <a href="submit-problem.html" class="btn btn-sm btn-primary">
-          <i class="fa-solid fa-circle-plus"></i> Report Issue
-        </a>
+        <a href="index.html" class="btn btn-sm btn-secondary"><i class="fa-solid fa-arrow-left"></i> Home</a>
       </div>
     </header>
     
@@ -136,12 +148,12 @@
           </div>
         </div>
         
-    <div style="display:grid; grid-template-columns: 2fr 1fr; gap: 2rem;" class="dashboard-grid-detail">
+    <div class="dashboard-grid-detail">
       
       <!-- Feed Stream -->
       <div>
         <div class="card" style="margin-bottom: 2rem;">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between flex-wrap gap-2 feed-filter-bar">
             <div class="flex items-center gap-2">
               <button class="btn btn-sm btn-primary">Trending</button>
               <button class="btn btn-sm btn-secondary">Near Me</button>
@@ -205,6 +217,25 @@
       </main>
     </div>
   </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="dashboard-mobile-nav">
+    <a href="citizen-dashboard.html" class="dmn-link">
+      <i class="fa-solid fa-house"></i><span>Home</span>
+    </a>
+    <a href="submit-problem.html" class="dmn-link">
+      <i class="fa-solid fa-circle-plus"></i><span>Report</span>
+    </a>
+    <a href="social-feed.html" class="dmn-link active">
+      <i class="fa-solid fa-comments"></i><span>Feed</span>
+    </a>
+    <a href="notifications.html" class="dmn-link">
+      <i class="fa-solid fa-bell"></i><span>Alerts</span>
+    </a>
+    <a href="profile.html" class="dmn-link">
+      <i class="fa-solid fa-user"></i><span>Profile</span>
+    </a>
+  </nav>
 
   <div id="toastContainer" class="toast-container"></div>
 

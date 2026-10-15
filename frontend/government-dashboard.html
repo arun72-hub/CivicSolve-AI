@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,6 +14,9 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <!-- Sidebar overlay for mobile -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
   <div class="app-wrapper">
     
     <aside class="app-sidebar">
@@ -86,9 +89,9 @@
       
     <header class="app-topbar">
       <div class="flex items-center gap-2">
-        <button id="mobileMenuToggle" class="btn btn-icon btn-secondary" style="display:none;" title="Toggle Menu">
+        <!-- <button id="mobileMenuToggle" class="btn btn-icon btn-secondary" aria-label="Toggle Menu">
           <i class="fa-solid fa-bars"></i>
-        </button>
+        </button> -->
         <div class="topbar-search">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search problem ID, category, ward, or keyword...">
@@ -119,9 +122,7 @@
           <span class="topbar-badge"></span>
         </a>
 
-        <a href="submit-problem.html" class="btn btn-sm btn-primary">
-          <i class="fa-solid fa-circle-plus"></i> Report Issue
-        </a>
+         <a href="index.html" class="btn btn-sm btn-secondary"><i class="fa-solid fa-arrow-left"></i> Home</a>
       </div>
     </header>
     
@@ -187,7 +188,7 @@
     </div>
 
     <!-- Charts Row 1 -->
-    <div class="dashboard-grid-2" style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+    <div class="dashboard-grid-2" style="margin-bottom: 2rem;">
       <div class="card">
         <div class="card-header">
           <h3 class="card-title"><i class="fa-solid fa-chart-pie text-primary"></i> Problems by Category</h3>
@@ -206,7 +207,7 @@
     </div>
 
     <!-- Charts Row 2 -->
-    <div class="dashboard-grid-2" style="display:grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+    <div class="dashboard-grid-2" style="margin-bottom: 2rem;">
       <div class="card">
         <div class="card-header">
           <h3 class="card-title"><i class="fa-solid fa-chart-column text-accent"></i> District Workload Comparison</h3>
@@ -244,22 +245,22 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>CS-2026-0002</strong></td>
-              <td>Contaminated Turbid Drinking Water Supply</td>
-              <td>Water Supply Board (BWSSB)</td>
-              <td>Smt. Kavita Rao</td>
-              <td><span class="badge badge-danger">-12h Overdue</span></td>
-              <td><span class="badge badge-warning">Tier-2 Senior Officer</span></td>
-              <td><button class="btn btn-sm btn-danger" onclick="CivicUtils.showToast('Urgent commissioner summons issued to BWSSB chief.', 'warning')">Summon Chief</button></td>
+              <td data-label="ID"><strong>CS-2026-0002</strong></td>
+              <td data-label="Incident">Contaminated Turbid Drinking Water Supply</td>
+              <td data-label="Authority">Water Supply Board (BWSSB)</td>
+              <td data-label="Officer">Smt. Kavita Rao</td>
+              <td data-label="SLA Status"><span class="badge badge-danger">-12h Overdue</span></td>
+              <td data-label="Escalation Level"><span class="badge badge-warning">Tier-2 Senior Officer</span></td>
+              <td data-label="Direct Action"><button class="btn btn-sm btn-danger" onclick="CivicUtils.showToast('Urgent commissioner summons issued to BWSSB chief.', 'warning')">Summon Chief</button></td>
             </tr>
             <tr>
-              <td><strong>CS-2026-0014</strong></td>
-              <td>Unsegregated Medical Waste Dumped Behind Clinic</td>
-              <td>Health & Pollution Board</td>
-              <td>Dr. B. Manjunath</td>
-              <td><span class="badge badge-warning">2h Remaining</span></td>
-              <td><span class="badge badge-accent">Tier-1 Authority Reminder</span></td>
-              <td><button class="btn btn-sm btn-secondary" onclick="CivicUtils.showToast('Reminder pushed to Zonal Officer phone.', 'info')">Send Alert</button></td>
+              <td data-label="ID"><strong>CS-2026-0014</strong></td>
+              <td data-label="Incident">Unsegregated Medical Waste Dumped Behind Clinic</td>
+              <td data-label="Authority">Health & Pollution Board</td>
+              <td data-label="Officer">Dr. B. Manjunath</td>
+              <td data-label="SLA Status"><span class="badge badge-warning">2h Remaining</span></td>
+              <td data-label="Escalation Level"><span class="badge badge-accent">Tier-1 Authority Reminder</span></td>
+              <td data-label="Direct Action"><button class="btn btn-sm btn-secondary" onclick="CivicUtils.showToast('Reminder pushed to Zonal Officer phone.', 'info')">Send Alert</button></td>
             </tr>
           </tbody>
         </table>
@@ -269,6 +270,25 @@
       </main>
     </div>
   </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="dashboard-mobile-nav">
+    <a href="government-dashboard.html" class="dmn-link active">
+      <i class="fa-solid fa-building-columns"></i><span>Command</span>
+    </a>
+    <a href="government-map.html" class="dmn-link">
+      <i class="fa-solid fa-map-location-dot"></i><span>Map</span>
+    </a>
+    <a href="government-monitoring.html" class="dmn-link">
+      <i class="fa-solid fa-desktop"></i><span>Monitor</span>
+    </a>
+    <a href="government-analytics.html" class="dmn-link">
+      <i class="fa-solid fa-chart-pie"></i><span>Analytics</span>
+    </a>
+    <a href="escalation-center.html" class="dmn-link">
+      <i class="fa-solid fa-triangle-exclamation"></i><span>Escalate</span>
+    </a>
+  </nav>
 
   <div id="toastContainer" class="toast-container"></div>
 

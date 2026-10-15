@@ -16,9 +16,9 @@
 <body>
   <div class="app-wrapper">
     
-    <aside class="app-sidebar">
+    <aside class="app-sidebar" >
       <div class="sidebar-header">
-        <a href="index.html" class="brand-logo">
+         <a href="index.html" class="brand-logo">
           <i class="fa-solid fa-city"></i>
           <span>CivicSolve<span class="ai-tag">AI</span></span>
         </a>
@@ -82,17 +82,20 @@
       </div>
     </aside>
     
-    <div class="app-main">
+    <div class="app-main" ">
       
-    <header class="app-topbar">
+     <header class="app-topbar">                                                  
       <div class="flex items-center gap-2">
-        <button id="mobileMenuToggle" class="btn btn-icon btn-secondary" style="display:none;" title="Toggle Menu">
+        <!-- <button id="mobileMenuToggle" class="btn btn-icon btn-secondary" aria-label="Toggle Menu">
           <i class="fa-solid fa-bars"></i>
-        </button>
-        <div class="topbar-search">
+        </button> -->
+        <div class="topbar-search" id="topbarSearch"">
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search problem ID, category, ward, or keyword...">
         </div>
+        <button class="btn btn-icon btn-secondary" id="searchToggle" title="Search" style="display:none;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
       <div class="topbar-actions">
         <!-- Demo Mode Role Selector -->
@@ -119,9 +122,7 @@
           <span class="topbar-badge"></span>
         </a>
 
-        <a href="submit-problem.html" class="btn btn-sm btn-primary">
-          <i class="fa-solid fa-circle-plus"></i> Report Issue
-        </a>
+         <a href="index.html" class="btn btn-sm btn-secondary"><i class="fa-solid fa-arrow-left"></i> Home</a>
       </div>
     </header>
     

@@ -1,8 +1,12 @@
-/* ==========================================================================
-   CivicSolve AI - Responsive Breakpoints & Mobile Optimization
+﻿/* ==========================================================================
+   CivicSolve AI — Complete Responsive Breakpoints & Mobile Optimization
+   Covers: index.html (homepage) + all dashboard pages
+   Breakpoints: 1280px | 1024px | 768px | 480px | 360px
    ========================================================================== */
 
-/* Large Screens */
+/* ==========================================================================
+   LARGE DESKTOP (>= 1200px) — baseline dashboard grids
+   ========================================================================== */
 @media (min-width: 1200px) {
   .dashboard-grid-4 {
     display: grid;
@@ -16,151 +20,205 @@
   }
 }
 
-/* Tablets (iPad, etc.) */
-@media (max-width: 1024px) {
-  .app-sidebar {
-    transform: translateX(-100%);
+/* ==========================================================================
+   MEDIUM-LARGE (max-width: 1280px) — slight squeeze for wide grids
+   ========================================================================== */
+@media (max-width: 1280px) {
+  .stats-bar-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
-
-  .app-sidebar.show {
-    transform: translateX(0);
+  .stat-divider {
+    display: none !important;
   }
-
-  .app-main {
-    margin-left: 0;
-  }
-
-  .dashboard-grid-4, .dashboard-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-  }
-
-  .topbar-search {
-    width: 240px;
-  }
-
-  .nav-menu {
-    display: none;
-  }
-
-  .mobile-nav-toggle {
-    display: flex;
+  .footer-grid {
+    gap: 2rem !important;
   }
 }
 
-/* Mobile Devices (max-width: 768px) */
-@media (max-width: 768px) {
-  body {
-    padding-bottom: 70px; /* Space for mobile bottom bar */
-  }
-
-  .mobile-bottom-bar {
-    display: flex;
-  }
-
-  .hero {
-    padding: 4rem 1rem 3rem !important;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 7vw, 2.75rem) !important;
-    line-height: 1.15 !important;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem !important;
-    margin-bottom: 1.75rem !important;
-  }
-
-  .hero .cta-buttons {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.75rem !important;
-  }
-
-  .hero .cta-buttons .btn {
-    width: 100%;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 1rem !important;
-  }
-
-  .stat-box {
-    padding: 1.25rem !important;
-  }
-
-  .stat-box h3 {
-    font-size: 2rem !important;
-  }
-
-  .steps-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
-  }
-
-  .pipeline-card {
-    padding: 1.25rem !important;
-  }
-
-  .app-content {
-    padding: 1.25rem;
-  }
-
-
+/* ==========================================================================
+   TABLET / SMALL LAPTOP (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .app-sidebar { transform: translateX(-100%); }
+  .app-sidebar.show { transform: translateX(0); }
+  .app-main { margin-left: 0 !important; }
   .dashboard-grid-4, .dashboard-grid-3 {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem;
   }
+  .topbar-search { width: 240px; }
+  .nav-links { display: none !important; }
+  .hamburger { display: flex !important; }
+  .sim-pipeline { grid-template-columns: repeat(3, 1fr) !important; gap: 0.75rem !important; }
+  .steps-timeline { grid-template-columns: repeat(4, 1fr) !important; gap: 1rem !important; }
+  .steps-timeline::before { display: none !important; }
+  .cat-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .incident-cards { grid-template-columns: repeat(2, 1fr) !important; }
+  .testi-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .success-grid { grid-template-columns: 1fr !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 2rem !important; }
+  .nav-menu { display: none; }
+  .mobile-nav-toggle { display: flex; }
+}
 
-  .topbar-search {
-    display: none;
-  }
+/* ==========================================================================
+   MOBILE LARGE (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  body { padding-bottom: 70px; }
+  .mobile-bar, .mobile-bottom-bar { display: flex !important; }
+  .container, .container-fluid { padding: 0 1rem !important; }
 
-  .page-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  /* Hero */
+  .hero-section { padding: 90px 0 60px !important; min-height: auto !important; }
+  .hero-title { font-size: clamp(2rem, 8vw, 2.75rem) !important; line-height: 1.15 !important; }
+  .hero-subtitle { font-size: 1rem !important; margin-bottom: 1.75rem !important; }
+  .hero-cta-group { flex-direction: column !important; align-items: stretch !important; gap: 0.65rem !important; margin-bottom: 2.5rem !important; }
+  .hero-cta-group .btn { width: 100% !important; justify-content: center !important; }
+  .hero-orb-1 { width: 280px !important; height: 280px !important; }
+  .hero-orb-2 { width: 220px !important; height: 220px !important; }
+  .hero-orb-3 { width: 160px !important; height: 160px !important; }
 
-  .custom-table thead {
-    display: none;
-  }
+  /* Sim card */
+  .sim-card { padding: 1.25rem !important; border-radius: 14px !important; }
+  .sim-pipeline { grid-template-columns: repeat(2, 1fr) !important; gap: 0.6rem !important; }
+  .sim-pills { gap: 0.4rem !important; }
+  .sim-pill { font-size: 0.75rem !important; padding: 0.35rem 0.8rem !important; }
+  .sim-banner { flex-direction: column !important; align-items: flex-start !important; }
 
-  .custom-table, .custom-table tbody, .custom-table tr, .custom-table td {
-    display: block;
-    width: 100%;
-  }
+  /* Stats bar */
+  .stats-bar { padding: 2rem 0 !important; }
+  .stats-bar-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
+  .stat-divider { display: none !important; }
 
-  .custom-table tr {
-    margin-bottom: 1rem;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    background: var(--bg-card);
-    padding: 0.5rem 0;
-  }
+  /* Section padding */
+  .hiw-section, .categories-section, .incidents-section,
+  .success-section, .testimonials-section, .faq-section, .cta-section { padding: 4rem 0 !important; }
+  .section-heading { font-size: clamp(1.6rem, 5vw, 2.2rem) !important; }
+  .section-sub { font-size: 0.95rem !important; }
 
-  .custom-table td {
-    text-align: right;
-    padding: 0.5rem 1rem;
-    position: relative;
-    border-bottom: 1px solid var(--border);
-  }
+  /* How it works timeline → vertical cards */
+  .steps-timeline { grid-template-columns: 1fr !important; gap: 1.5rem !important; margin-top: 2rem !important; }
+  .steps-timeline::before { display: none !important; }
+  .step-item { flex-direction: row !important; align-items: flex-start !important; text-align: left !important; gap: 1rem !important; background: var(--bg-card) !important; border: 1px solid var(--border) !important; border-radius: 14px !important; padding: 1rem 1.25rem !important; }
+  .step-num { margin-bottom: 0 !important; flex-shrink: 0 !important; width: 44px !important; height: 44px !important; font-size: 1rem !important; }
 
-  .custom-table td::before {
-    content: attr(data-label);
-    float: left;
-    font-weight: 700;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
+  /* Categories */
+  .cat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.85rem !important; margin-top: 2rem !important; }
+  .cat-card { padding: 1.25rem 1rem !important; }
+  .cat-icon { width: 44px !important; height: 44px !important; font-size: 1.2rem !important; }
 
-  .custom-table td:last-child {
-    border-bottom: none;
-  }
+  /* Incidents */
+  .incident-cards { grid-template-columns: 1fr !important; gap: 1rem !important; margin-top: 2rem !important; }
+
+  /* Success */
+  .success-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+  .before-after { grid-template-columns: 1fr 1fr !important; gap: 0.75rem !important; }
+
+  /* Testimonials */
+  .testi-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+
+  /* Partners */
+  .partners-row { gap: 1.25rem 2rem !important; }
+
+  /* CTA */
+  .cta-title { font-size: clamp(1.6rem, 6vw, 2.2rem) !important; }
+  .cta-sub { font-size: 0.97rem !important; margin-bottom: 1.75rem !important; }
+  .cta-btn-group { flex-direction: column !important; align-items: stretch !important; gap: 0.7rem !important; max-width: 340px !important; margin: 0 auto !important; }
+  .cta-btn-group .btn { width: 100% !important; justify-content: center !important; }
+
+  /* Footer */
+  .site-footer { padding: 3rem 0 0 !important; }
+  .footer-grid { grid-template-columns: 1fr !important; gap: 1.75rem !important; padding-bottom: 2rem !important; }
+
+  /* Legacy homepage */
+  .stats-grid { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
+  .stat-box { padding: 1.25rem !important; }
+  .stat-box h3 { font-size: 2rem !important; }
+  .steps-grid { grid-template-columns: 1fr !important; }
+  .categories-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
+  .pipeline-card { padding: 1.25rem !important; }
+
+  /* Dashboard */
+  .app-content { padding: 1.25rem !important; }
+  .dashboard-grid-4, .dashboard-grid-3 { grid-template-columns: 1fr !important; }
+  .dashboard-grid-2 { grid-template-columns: 1fr !important; }
+  .topbar-search { display: none !important; }
+  .page-header { flex-direction: column !important; align-items: flex-start !important; }
+
+  /* Responsive table */
+  .custom-table thead { display: none !important; }
+  .custom-table, .custom-table tbody, .custom-table tr, .custom-table td { display: block !important; width: 100% !important; }
+  .custom-table tr { margin-bottom: 1rem !important; border: 1px solid var(--border) !important; border-radius: var(--radius-md) !important; background: var(--bg-card) !important; padding: 0.5rem 0 !important; }
+  .custom-table td { text-align: right !important; padding: 0.5rem 1rem !important; position: relative !important; border-bottom: 1px solid var(--border) !important; }
+  .custom-table td::before { content: attr(data-label) !important; float: left !important; font-weight: 700 !important; font-size: 0.75rem !important; text-transform: uppercase !important; color: var(--muted) !important; }
+  .custom-table td:last-child { border-bottom: none !important; }
+
+  /* Toast */
+  #toastZone, .toast-container { top: auto !important; bottom: 80px !important; left: 1rem !important; right: 1rem !important; align-items: stretch !important; }
+  .toast, .toast-msg { min-width: unset !important; max-width: 100% !important; width: 100% !important; }
+
+  /* Modal */
+  .modal-overlay { padding: 1rem !important; align-items: flex-end !important; }
+  .modal-box { max-width: 100% !important; border-radius: 20px 20px 0 0 !important; max-height: 85vh !important; }
+
+  /* Nav: hide text buttons on mobile */
+  .nav-right .btn-sm.btn-secondary { display: none !important; }
+  .nav-right .btn-sm.btn-primary { display: none !important; }
+}
+
+/* ==========================================================================
+   MOBILE SMALL (max-width: 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .container, .container-fluid { padding: 0 0.875rem !important; }
+  .hero-section { padding: 80px 0 50px !important; }
+  .hero-pill { font-size: 0.72rem !important; padding: 0.35rem 0.9rem !important; }
+  .hero-title { font-size: clamp(1.8rem, 9vw, 2.4rem) !important; }
+  .sim-pipeline { grid-template-columns: 1fr 1fr !important; gap: 0.5rem !important; }
+  .sim-step { padding: 0.75rem 0.5rem !important; }
+  .sim-label { font-size: 0.6rem !important; }
+  .sim-value { font-size: 0.72rem !important; }
+  .sim-icon { width: 32px !important; height: 32px !important; font-size: 0.85rem !important; margin-bottom: 0.4rem !important; }
+  .stats-bar-grid { gap: 0.75rem !important; }
+  .stat-number { font-size: 1.6rem !important; }
+  .stat-label-text { font-size: 0.72rem !important; }
+  .cat-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.65rem !important; }
+  .cat-card { padding: 1rem 0.75rem !important; }
+  .before-after { grid-template-columns: 1fr !important; }
+  .section-heading { font-size: clamp(1.4rem, 7vw, 1.9rem) !important; }
+  .footer-brand-logo { font-size: 1.1rem !important; }
+  .hamburger { width: 36px !important; height: 36px !important; }
+  .nav-drawer { width: calc(100vw - 32px) !important; right: -110vw !important; }
+  .nav-drawer.open { right: 16px !important; }
+}
+
+/* ==========================================================================
+   MOBILE EXTRA SMALL (max-width: 360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+  .hero-title { font-size: 1.7rem !important; }
+  .sim-pipeline { grid-template-columns: 1fr !important; }
+  .cat-grid { grid-template-columns: 1fr !important; }
+  .stats-bar-grid { grid-template-columns: 1fr 1fr !important; }
+  .btn-lg { padding: 0.75rem 1.25rem !important; font-size: 0.9rem !important; }
+}
+
+/* ==========================================================================
+   LANDSCAPE MOBILE (short + wide screens)
+   ========================================================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-section { min-height: auto !important; padding: 80px 0 40px !important; }
+  .hero-orb { display: none !important; }
+  .sim-card { margin-top: 1rem !important; }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+@media print {
+  .main-header, .hamburger, .mobile-bar, .nav-drawer,
+  .drawer-overlay, .hero-orb, .hero-bg-mesh, .sim-scan, #toastZone { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .container { max-width: 100% !important; }
 }
